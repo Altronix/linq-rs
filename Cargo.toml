@@ -1,0 +1,13 @@
+[workspace]
+
+members = [ 
+  "crates/apps/atx",
+  "crates/apps/scan",
+  "crates/apps/view",
+  "crates/linq", 
+  "crates/linq-db",
+  "crates/linq-io",
+  "crates/linq-sys",
+  "crates/linq-util",
+  "crates/linq-view"
+]

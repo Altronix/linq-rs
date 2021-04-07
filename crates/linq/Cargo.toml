@@ -1,0 +1,17 @@
+[package]
+name = "linq"
+version = "0.1.0"
+authors = ["thomas <thomas.chiantia@gmail.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+libc = "0.2"
+linq-io = { path = "../linq-io" }
+linq-db = { path = "../linq-db" }
+serde = { version = "1.0", features = [ "derive" ] }
+serde_json = "1.0"
+thiserror = "1.0"
+log = "0.4"
+futures = "0.3"

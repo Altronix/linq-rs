@@ -1,0 +1,9 @@
+/target
+
+__install*
+__build*
+build
+external/*
+!external/.gitkeep
+compile_commands.json
+.cache

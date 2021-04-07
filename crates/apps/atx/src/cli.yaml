@@ -1,0 +1,111 @@
+name: atx
+version: "0.1.0"
+about: altronix command utilities
+author: Thomas Chiantia <thomas@altronix.com>
+
+global_settings:
+    - ColoredHelp
+
+args:
+    - verbose:
+        help: print extra logging information
+        short: v
+        long: verbose
+
+subcommands:
+    - cmd:
+        about: like curl but for linq devices
+        args:
+            - protocol:
+                help: Transport medium to use
+                short: x
+                long: protocol
+                takes_value: true
+                possible_values: [ usb, http, https, zmtp, zmtps ]
+                required: true
+            - method:
+                help: Request type
+                short: m
+                long: method
+                takes_value: true
+                required: true
+                possible_values: [ GET, POST, DELETE ]
+            - path:
+                help: Path (or URL)
+                short: p
+                long: path
+                takes_value: true
+                required: true
+            - data:
+                help: Body of request
+                short: d
+                long: data
+                takes_value: true
+                required_if: 
+                    - [ method, POST ]
+            - serial:
+                help: Serial of device to make request to
+                short: s
+                long: serial
+                takes_value: true
+                required_if:
+                    - [ protocol, zmtp ]
+                    - [ protocol, zmtps ]
+            - address:
+                help: network location
+                short: a
+                long: address
+                takes_value: true
+                required_if:
+                    - [ protocol, http ]
+                    - [ protocol, https ]
+
+
+    - ipconfig:
+        about: update network settings
+        args:
+            - protocol:
+                help: Transport medium to use
+                short: x
+                long: protocol
+                takes_value: true
+                possible_values: [ usb, http, https, zmtp, zmtps ]
+                required: true
+            - ip:
+                short: n
+                long: network
+                takes_value: true
+            - sn:
+                short: m
+                long: mask
+                takes_value: true
+            - gw:
+                short: g
+                long: gateway
+                takes_value: true
+            - reboot:
+                short: r
+                long: reboot
+ 
+    - update:
+        about: perform a firmware update
+        args:
+            - protocol:
+                help: Transport medium to use
+                short: x
+                long: protocol
+                takes_value: true
+                possible_values: [ usb, http, https, zmtp, zmtps ]
+                required: true
+            - file:
+                help: Path/to/update.json
+                short: f
+                long: file
+                takes_value: true
+                required: true
+            - image:
+                help: firmware or website update
+                short: i
+                takes_value: true
+                possible_values: [ firmware, website ]
+                required: true
